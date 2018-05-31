@@ -1,7 +1,7 @@
-import path from 'path'
-import baseConfig from './webpack.config.base.babel.js'
+const path = require('path')
+const baseConfig = require('./webpack.config.base')
 
-const config = {
+module.exports = {
   ...baseConfig,
   devtool: false,
   context: path.resolve(__dirname, 'src/lib'),
@@ -24,5 +24,3 @@ const config = {
   ],
   target: 'web'
 }
-
-export default config

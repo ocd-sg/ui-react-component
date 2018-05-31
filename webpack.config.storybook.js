@@ -1,7 +1,7 @@
-import { resolve } from 'path'
-import webpack from 'webpack'
+const { resolve } = require('path')
+const webpack = require('webpack')
 
-import DashboardPlugin from 'webpack-dashboard/plugin'
+const DashboardPlugin = require('webpack-dashboard/plugin')
 const { UglifyJsPlugin } = webpack.optimize
 
 module.exports = (baseConfig) => ({

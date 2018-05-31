@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "target": "es5",
+    "allowJs": true,
+    "jsx": "react",
+    "module": "es6"
+  },
+  "include": [
+    "./"
+  ]
+}

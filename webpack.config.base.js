@@ -1,22 +1,22 @@
-import { resolve } from 'path'
-import webpack from 'webpack'
+const { resolve } = require('path')
+const webpack = require('webpack')
 
-const config = {
+module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /(\.jsx|\.js)$/,
         include: resolve(__dirname, 'src'),
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'ts-loader'
           },
-          {
-            loader: 'eslint-loader',
-            options: {
-              emitWarning: true
-            }
-          }
+          // {
+          //   loader: 'eslint-loader',
+          //   options: {
+          //     emitWarning: true
+          //   }
+          // }
         ]
       }
     ]
@@ -30,5 +30,3 @@ const config = {
   ],
   stats: 'minimal'
 }
-
-export default config
