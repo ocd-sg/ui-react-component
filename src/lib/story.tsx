@@ -19,9 +19,6 @@ storiesOf('Component', module)
   ))
   .add('array as children', () => (
     <Component data={data}>
-      {
-        [1, 2, 3]
-          .map((d, index) => <p key={index}>{d}</p>)
-      }
+      {[1, 2, 3].map((d, index) => <p key={index}>{d}</p>)}
     </Component>
   ))
