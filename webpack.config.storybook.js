@@ -2,7 +2,6 @@ const { resolve } = require('path')
 const webpack = require('webpack')
 
 const DashboardPlugin = require('webpack-dashboard/plugin')
-const { UglifyJsPlugin } = webpack.optimize
 
 module.exports = (baseConfig) => ({
   ...baseConfig,
@@ -10,7 +9,16 @@ module.exports = (baseConfig) => ({
     rules: [
       ...baseConfig.module.rules,
       {
-        test: /(\.css)$/,
+        test: /\.tsx?$/,
+        include: resolve(__dirname, 'src'),
+        use: [
+          {
+            loader: 'ts-loader'
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
         include: resolve(__dirname, 'node_modules'),
         use: [
           {
@@ -23,24 +31,12 @@ module.exports = (baseConfig) => ({
       }
     ]
   },
-  plugins: baseConfig.plugins
-    .reduce((memo, plugin) => (
-      plugin instanceof UglifyJsPlugin
-        ? [
-          ...memo,
-          new UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-              comparisons: false
-            }
-          })
-        ]
-        : [ ...memo, plugin ]
-    ), [])
-    .concat(process.env.NODE_ENV === 'development' ? new DashboardPlugin() : null)
-    .filter((d) => d),
+  plugins: process.env.NODE_ENV === 'development'
+    ? [ ...baseConfig.plugins, new DashboardPlugin() ]
+    : baseConfig.plugins,
   resolve: {
     ...baseConfig.resolve,
+    extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
     alias: {
       react: resolve(__dirname, 'node_modules/react')
     },

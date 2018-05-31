@@ -1,7 +1,7 @@
 import { configure } from '@storybook/react'
 import 'ui-tachyons-light'
 
-const req = require.context('../lib', true, /story\.js$/)
+const req = require.context('../lib', true, /story\.tsx?$/)
 
 const loadStories = () => {
   req.keys().forEach(req)

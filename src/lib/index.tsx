@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export interface Props {
+export type Props = {
   children?: React.ReactElement<any>[] | React.ReactElement<any>,
   data: {
     id?: string,
