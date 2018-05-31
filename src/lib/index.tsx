@@ -1,12 +1,12 @@
-import * as React from 'react'
+import * as React from "react";
 
 export type Props = {
-  children?: React.ReactElement<any>[] | React.ReactElement<any>,
+  children?: React.ReactElement<any>[] | React.ReactElement<any>;
   data: {
-    id?: string,
-    value?: string
-  }
-}
+    id?: string;
+    value?: string;
+  };
+};
 
 const Component = ({
   children,
@@ -15,10 +15,12 @@ const Component = ({
     value: null
   }
 }: Props) => (
-  <div className='f6 pv2 ph2'>
-    <h3 className='serif f4'>{data.id}: {data.value}</h3>
+  <div className="f6 pv2 ph2">
+    <h3 className="serif f4">
+      {data.id}: {data.value}
+    </h3>
     {children}
   </div>
-)
+);
 
-export default Component
+export default Component;
